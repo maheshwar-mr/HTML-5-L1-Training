@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Video</title>
+		<style>
+			
+			button{
+				background-color: #0b71d8;
+				border: none;
+				color: white;
+				padding: 15px 32px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+			}
+			
+			body{
+				background-color:#F0FFFF;
+				padding:10px;
+			}
+			
+			.center{
+				display:block;
+				margin-top:5%;
+				margin-left:auto;
+				margin-right:auto;
+				margin-bottom:20px;
+				width:520px;
+			}
+			p{
+				text-decoration:underline;
+				color:#0b71d8;
+				text-align:center;
+				margin:0 0 0 0;
+				font-size:1.5em;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<p>Video of the Week</p>
+		
+		<video id="vid" class="center" loop>
+			<source src="18964023.mp4" type="video/mp4">
+			<source src="18964023.ogg" type="video/ogg">
+			Your browser does not support the video tag.
+		</video>
+		
+		<div style="text-align:center;">
+			<button id="play_button">PLAY</button>
+		</div>
+		
+		<script language="JavaScript">
+			var playButton=document.getElementById("play_button");
+			playButton.addEventListener("click",playPause);
+			myVideo=document.getElementById("vid");
+			function playPause()
+			{
+				if(vid.paused){
+					vid.play();
+					playButton.innerHTML="PAUSE";
+				}
+				else{
+					vid.pause();
+					playButton.innerHTML="PLAY";
+				}
+			};
+		</script>
+		
+	</body>
+	
+</html>

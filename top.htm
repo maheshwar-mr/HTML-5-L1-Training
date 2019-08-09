@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Top</title>
+		
+		<style>
+		h1.heading{
+			font-family:Arial;
+			color:#0041C2;
+			text-align:center;
+			width:50%;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		div{
+			font-family:arial;
+			text-align:right;
+			font-size:1.2em;
+			position:absolute;
+			top:8px;
+			right:16px;
+		}
+		ul{
+			font-family:arial;
+			list-style-type:none;
+			overflow:hidden;
+			font-size:1.25em;
+		}
+		li{
+			float:left;
+		}
+		li a{
+			display:block;
+			text-align:center;
+			padding:10px 25px 10px 25px;
+			text-decoration:none;
+			color:#3090C7;
+		}
+		</style>			
+	</head>
+	
+	
+	<body style="background-color:#F0FFFF">
+		<h1 class="heading">Amazing Online Video Library</h1>
+		<div>
+			<p id="date"></p>
+			<script language="JavaScript">
+				n = new Date();
+				y = n.getFullYear();
+				m = n.getMonth();
+				d = n.getDate();
+				months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+				document.getElementById('date').innerHTML = d+" "+months[m]+", "+y;
+			</script>
+		</div>
+		<ul>
+			<li><a href="video.htm" target="video">Home</a></li>
+			<li><a href="career.htm" target="_blank">Career</a></li>
+			<li><a href="faq.htm" target="_blank">FAQ</a></li>
+			<li><a href="aboutUs.htm" target="_blank">About Us</a></li>
+		</ul>
+	</body>
+	
+</html>

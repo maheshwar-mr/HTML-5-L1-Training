@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Form</title>
+		<style>
+			table{
+				margin-top:10%;
+				margin-bottom:10%;
+				margin-left:10%;
+				margin-right:auto;
+				text-align:left;
+			}
+			td{
+				padding:10px;
+				font-family:arial;
+				font-size:1.15em;
+			}
+			.a{
+				text-transform:uppercase;
+			}
+			body{
+				background-color:#F0FFFF;
+			}
+			.drtext{
+				margin-left:15%;
+				margin-right:auto;
+				text-align:center;
+			}
+		</style>
+		<script type="text/javascript">
+			function save(){
+				var fn=document.getElementById("firstName");
+				var ln=document.getElementById("lastName");
+				var ei=document.getElementById("email");
+				var ct=document.getElementById("city");
+				var ag=document.getElementById("age");
+				var vc=document.getElementById("videoChoice");
+				
+				try{
+				localStorage.setItem("first",fn.value);
+				localStorage.setItem("last",ln.value);
+				localStorage.setItem("email",ei.value);
+				localStorage.setItem("c",ct.value);
+				localStorage.setItem("agee",ag.value);
+				localStorage.setItem("v",vc.value);
+				}
+				catch(e){
+					if(e==QUOTA_EXCEEDED_ERR){
+						console.log("Error: Local Storage limit exceeded.");
+					}
+					else{
+						console.log("Error saving to Local Storage.");
+					}
+				}
+				document.getElementById("drtext");
+				popupwindow("","Your Details",'500','250');
+				/*
+				var myWindow = window.open("", "MsgWindow", "width=500, height=250");
+				myWindow.document.writeln("<title>Your Details</title>");
+				myWindow.document.writeln("<p><pre>First Name                 :  "+localStorage.getItem("first")+"</pre><p>");
+				myWindow.document.writeln("<p><pre>Last Name                  :  "+localStorage.getItem("last")+"<p></pre>");
+				myWindow.document.writeln("<p><pre>Email                      :  "+localStorage.getItem("email")+"<p></pre>");
+				myWindow.document.writeln("<p><pre>City                       :  "+localStorage.getItem("c")+"<p></pre>");
+				myWindow.document.writeln("<p><pre>Age                        :  "+localStorage.getItem("agee")+"<p></pre>");
+				myWindow.document.writeln("<p><pre>Video Choice for Next Week :  "+localStorage.getItem("v")+"<p></pre>");
+				*/
+				
+			}
+			
+			function popupwindow(url, title, w, h) {
+				var left = (screen.width/2)-(w/2);
+				var top = (screen.height/2)-(h/2);
+				var myWindow = window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+				myWindow.document.writeln("<title>Your Details</title>");
+				myWindow.document.writeln("<p><pre>First Name                 :  "+localStorage.getItem("first")+"</pre><p>");
+				myWindow.document.writeln("<p><pre>Last Name                  :  "+localStorage.getItem("last")+"<p></pre>");
+				myWindow.document.writeln("<p><pre>Email                      :  "+localStorage.getItem("email")+"<p></pre>");
+				myWindow.document.writeln("<p><pre>City                       :  "+localStorage.getItem("c")+"<p></pre>");
+				myWindow.document.writeln("<p><pre>Age                        :  "+localStorage.getItem("agee")+"<p></pre>");
+				myWindow.document.writeln("<p><pre>Video Choice for Next Week :  "+localStorage.getItem("v")+"<p></pre>");
+			}
+			
+		</script>
+	</head>
+	
+	<body>
+		<table class="form">
+		<form name="details" onsubmit="save()">
+			<tr>
+				<td>First Name: </td>
+				<td><input type="text" id="firstName" pattern='[A-Za-z\\s]*' title="Name must contain Alphabets only" required/></td>
+			</tr>
+			
+			<tr>
+				<td>Last Name: </td>
+				<td><input type="text" id="lastName" pattern='[A-Za-z\\s]*' title="Name must contain Alphabets only" required/></td>
+			</tr>
+			
+			<tr>
+				<td>Email ID: </td>
+				<td><input type="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Email ID should of the form abcd@mail.com" required/></td>
+			</tr>
+			
+			<tr>
+				<td>City: </td>
+				<td>
+					<input type="text" list="cities_list" id="city" required/>
+					<datalist id="cities_list">
+						<option value="Delhi"/>
+						<option value="Mumbai"/>
+						<option value="Kolkata"/>
+						<option value="Chennai"/>
+						<option value="Bangalore"/>
+						<option value="Hyderabad"/>
+					</datalist>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>Age: </td>
+				<td><input type="number" id="age" min="18" max="120" required/></td>
+			</tr>
+			
+			<tr>
+				<td>Video Choice for Next Week: </td>
+				<td><input type="text" id="videoChoice" required/></td>
+			</tr>
+			
+			<tr>
+				<td/>
+				<td>
+					<input type="submit" name="submit" value="Submit"/>
+				</td>
+			</tr>
+		</form>
+		</table>
+	</body>
+	
+</html>
